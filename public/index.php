@@ -1,11 +1,8 @@
-<?php   
-
+<?php
 
 require '../app/Manager/QcmManager.php';
 
-<div class="container">
+$qcmManager = new QcmManager();
+$qcms = $qcmManager->getAll();
 
-$qcmnw = new QcmManager();
-$qcm1 = $qcmnw->getAll();
-
-var_dump($qcm1);
+require '../template/index.tpl.php';
