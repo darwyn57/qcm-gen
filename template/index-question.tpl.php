@@ -1,9 +1,8 @@
 <?php require '../template/partials/_top.tpl.php'; ?>
 <div class="container">
-    <h1>Mes QCMs</h1>
+    <h1>Mes questions</h1>
 
-    <a href="/new-qcm.php">Nouveau</a>
-
+    <a href="/new-question.php">Nouveau</a>
     <table class="table table-hover table-bordered border-dark">
         <thead>
             <tr class="table-warning table-bordered border-dark">
@@ -13,10 +12,10 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($qcms as $qcm): ?>
+            <?php foreach($questions as $q): ?>
             <tr>
-                <td class="table-danger"><?= $qcm->getId() ?></td>
-                <td class="table-info"><?= $qcm->getTitle() ?></td>
+                <td class="table-danger"><?= $q->getId() ?></td>
+                <td class="table-info"><?= $q->getTitle() ?></td>
                 <td>
                     <a href="">Modifier</a>
                     <a href="">Supprimer</a>
