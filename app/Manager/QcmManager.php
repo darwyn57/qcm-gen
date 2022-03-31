@@ -1,37 +1,21 @@
 <?php
 
 require '../app/Entity/QCM.php';
+require_once '../app/Manager/Manager.php';
 
-class QcmManager
+class QcmManager extends Manager
 {
-    private $pdo;
-
-    public function __construct()
-    {
-        try
-        {
-            $this->pdo = new PDO('mysql:host=localhost;dbname=qcm','root');
-        }
-        catch(PDOException $e)
-        {
-            echo 'Error : ' . $e->getMessage();
-            die;
-        }
-    }
 
     public function getAll()
     {
         $sql = 'SELECT * FROM qcm';
-        $req = $this->pdo->prepare($sql);
+        $req = $this->getPdo()->prepare($sql);
         $req->execute();
         $qcms = $req->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
         foreach($qcms as $qcm)
         {
-            $obj = new QCM();
-            $obj->setId($qcm['id']);
-            $obj->setTitle($qcm['title']);
-            $result[] = $obj;
+            $result[] = (new QCM())->hydrate($qcm);
         }
 
         return $result;
@@ -40,12 +24,12 @@ class QcmManager
     public function insert(string $title) : int
     {
         $sql = "INSERT INTO qcm (title) VALUES (:title)";
-        $req = $this->pdo->prepare($sql);
+        $req = $this->getPdo()->prepare($sql);
         $req->execute([
             'title' => $title,
         ]);
 
-        return $this->pdo->lastInsertId();
+        return $this->getPdo()->lastInsertId();
     }
 
 }

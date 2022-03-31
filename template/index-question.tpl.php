@@ -17,8 +17,11 @@
                 <td class="table-danger"><?= $q->getId() ?></td>
                 <td class="table-info"><?= $q->getTitle() ?></td>
                 <td>
-                    <a href="">Modifier</a>
-                    <a href="">Supprimer</a>
+                <a href="/edit-question.php?id=<?= $q->getId() ?>">Modifier</a>
+                    <form action="/delete-question.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
+                        <input type="hidden" name="id" value="<?= $q->getId() ?>" />
+                        <input type="submit" name="submit" value="Supprimer" />
+                    </form>
                 </td>
             </tr>
             <?php endforeach; ?>
