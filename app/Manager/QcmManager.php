@@ -38,4 +38,10 @@ class QcmManager extends Manager
         return $req->execute(compact('id'));
        
     }
+    public function update(int $id, string $title)
+    {
+        $sql = "UPDATE qcm SET title = :title WHERE id = :id";
+        $req = $this->getPdo()->prepare($sql);
+        return $req->execute(compact('id','title'));
+    }
 }
