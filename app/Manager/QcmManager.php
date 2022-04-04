@@ -26,10 +26,16 @@ class QcmManager extends Manager
         $sql = "INSERT INTO qcm (title) VALUES (:title)";
         $req = $this->getPdo()->prepare($sql);
         $req->execute([
-            'title' => $title,
+            'title' => $title
         ]);
 
         return $this->getPdo()->lastInsertId();
     }
-
+    public function delete(int $id)
+    {
+        $sql = "DELETE FROM qcm WHERE id = :id";
+        $req = $this->getPdo()->prepare($sql);
+        return $req->execute(compact('id'));
+       
+    }
 }

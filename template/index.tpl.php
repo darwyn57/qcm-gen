@@ -1,4 +1,5 @@
 <?php require '../template/partials/_top.tpl.php'; ?>
+
 <div class="container">
     <h1>Mes QCMs</h1>
 
@@ -19,7 +20,10 @@
                 <td class="table-info"><?= $qcm->getTitle() ?></td>
                 <td>
                     <a href="">Modifier</a>
-                    <a href="">Supprimer</a>
+                    <form action="/delete-qcm.php" method="GET" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
+                        <input type="hidden" name="id" value="<?= $qcm->getId() ?>"/>
+                        <input type="submit" name="submit" value="Supprimer" />
+                    </form>
                 </td>
             </tr>
             <?php endforeach; ?>
