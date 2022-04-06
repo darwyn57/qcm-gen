@@ -4,6 +4,7 @@
     <h1>Mes QCMs</h1>
 
     <a href="/new-qcm.php">Nouveau</a>
+    <a href="/index-question.php">nouvelle question</a>
 
     <table class="table table-hover table-bordered border-dark">
         <thead>
