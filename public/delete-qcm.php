@@ -16,7 +16,7 @@ if(isset($_GET['id']))
     //$qcms = $qcmManager->getAll();
 
 
-    if(isset($_GET['id']))
+    if(isset($_GET['submit']))
     {
         try
         {
@@ -24,8 +24,7 @@ if(isset($_GET['id']))
             if(empty($_GET['id']))
                 $formErrors[] = "L'id est obligatoire dans l'url'";
 
-            if(count($formErrors) > 0)
-                throw new Exception(implode("<br />", $formErrors));
+            
 
             $qcmManager->deleteQCM($_GET['id']);
             header('Location: /index.php');
@@ -36,4 +35,5 @@ if(isset($_GET['id']))
         }
 
     }
+    require '../template/delete-qcm.tpl.php';
 }

@@ -7,7 +7,7 @@ if(isset($_GET['id']))
     require '../app/Manager/QcmManager.php';
    
     $qcmManager = new QcmManager();
-    $qcms = $qcmManager->get($_GET['id']);
+    $qcms = $qcmManager->getId();
 
     // On recupère tous les qcms depuis la db
     if(isset($_POST['submit']))
@@ -19,7 +19,7 @@ if(isset($_GET['id']))
                 $formErrors[] = "Le titre est obligatoire";
 
 
-            $qcmManager->update($_GET['id'], $_POST['title']);
+            $qcms->update($_GET['id'], $_POST['title']);
             header('Location: /index.php');
         }
         catch(Exception $e)

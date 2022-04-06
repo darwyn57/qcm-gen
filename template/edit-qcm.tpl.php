@@ -1,7 +1,7 @@
 <?php require '../template/partials/_top.tpl.php'; ?>
 
 <div class="container my-4">
-    <form action="" method="POST">
+    <form action="/edit-qcm.php" method="POST">
         <label>Intitulé du Qcm</label>
         <input type="text" name="title" value="<?= htmlspecialchars($qcms->getTitle()) ?>" required/>
         <input type="submit" name="submit" value="Enregistrer" />        
