@@ -4,9 +4,7 @@
     <form action="" method="POST">
         <label>Intitulé du Qcm</label>
         <input type="text" name="title" value="<?= htmlspecialchars($qcms->getTitle()) ?>" required/>
-        <input type="submit" name="submit" value="Enregistrer" />
-
-        
+        <input type="submit" name="submit" value="Enregistrer" />        
     </form>
     <?php if(!empty($message)): ?>
     <div class="alert">

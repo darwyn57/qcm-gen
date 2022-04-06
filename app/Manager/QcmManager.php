@@ -44,7 +44,7 @@ class QcmManager extends Manager
 
         return $this->getPdo()->lastInsertId();
     }
-    public function delete(int $id)
+    public function deleteQCM(int $id)
     {
         $sql = "DELETE FROM qcm WHERE id = :id";
         $req = $this->getPdo()->prepare($sql);

@@ -4,7 +4,7 @@
     <h1>Mes QCMs</h1>
 
     <a href="/new-qcm.php">Nouveau</a>
-    <a href="/index-question.php">nouvelle question</a>
+    
 
     <table class="table table-hover table-bordered border-dark">
         <thead>
@@ -20,9 +20,10 @@
                 <td class="table-danger"><?= $qcm->getId() ?></td>
                 <td class="table-info"><?= $qcm->getTitle() ?></td>
                 <td>
-                    <a href="/edit-qcm.php?id=<?= $qcm->getId() ?>">Modifier</a>
-                    <form action="/delete-qcm.php?id" method="GET" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
-                        <input type="hidden" name="id" value="<?= $qcm->getId() ?>"/>
+                    <a href="/edit-qcm.php?id<?= $qcm->getId() ?>">Modifier</a>
+                    <a href="/index-question.php">nouvelle question</a>
+                    <form action="/delete-qcm.php?id<?= $qcm->getId() ?>" method="GET" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
+                       
                         <input type="submit" name="submit" value="Supprimer" />
                     </form>
                 </td>
