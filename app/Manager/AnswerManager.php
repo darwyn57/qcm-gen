@@ -11,11 +11,11 @@ class AnswerManager extends Manager
         $sql = 'SELECT * FROM answer';
         $req = $this->getPdo()->prepare($sql);
         $req->execute();
-        $qcms = $req->fetchAll(PDO::FETCH_ASSOC);
+        $answers = $req->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
-        foreach($qcms as $qcm)
+        foreach($answers as $answer)
         {
-            $result[] = (new Question())->hydrate($qcm);
+            $result[] = (new Aswer())->hydrate($answer);
         }
 
         return $result;
@@ -25,25 +25,25 @@ class AnswerManager extends Manager
      * Recupère les infos d'une question via son id
      * @param int $id
      * 
-     * @return Question
+     * @return Answer
      */
-    public function get(int $id) : Question
+    public function get(int $id) : Answer
     {
-        $sql = "SELECT * FROM question WHERE id = :id";
+        $sql = "SELECT * FROM answer WHERE id = :id";
         $req = $this->getPdo()->prepare($sql);
         $req->execute([
             'id' => $id
         ]);
         $result = $req->fetch(PDO::FETCH_ASSOC);
         
-        $question = (new Question())->hydrate($result);
+        $answer = (new Answer())->hydrate($result);
 
-        return $question;
+        return $answer;
     }
 
     public function insert(string $title, int $id_qcm) : int
     {
-        $sql = "INSERT INTO question (title, id_qcm) VALUES (:title, :id_qcm)";
+        $sql = "INSERT INTO Answer (title, id_qcm) VALUES (:title, :id_qcm)";
         $req = $this->getPdo()->prepare($sql);
         $req->execute([
             'title' => $title,
@@ -55,14 +55,14 @@ class AnswerManager extends Manager
 
     public function update(int $id, string $title, int $id_qcm)
     {
-        $sql = "UPDATE question SET title = :title, id_qcm = :id_qcm WHERE id = :id";
+        $sql = "UPDATE answer SET title = :title, id_qcm = :id_qcm; id_question = :id_question WHERE id = :id";
         $req = $this->getPdo()->prepare($sql);
-        return $req->execute(compact('id','title','id_qcm'));
+        return $req->execute(compact('id','title','id_qcm, id_question'));
     }
 
     public function delete(int $id)
     {
-        $sql = "DELETE FROM question WHERE id = :id";
+        $sql = "DELETE FROM answer WHERE id = :id";
         $req = $this->getPdo()->prepare($sql);
         return $req->execute(compact('id'));
     }

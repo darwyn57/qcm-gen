@@ -1,4 +1,5 @@
 <?php
+require_once '../app/Entity/Entity.php';
 
 class Answer extends Entity
 {
