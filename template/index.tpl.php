@@ -19,8 +19,8 @@
                 <td class="table-danger"><?= $qcm->getId() ?></td>
                 <td class="table-info"><?= $qcm->getTitle() ?></td>
                 <td>
-                    <a href="/edit-qcm.tpl.php?id">Modifier</a>
-                    <form action="/delete-qcm.php" method="GET" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
+                    <a href="/edit-qcm.php?id=<?= $qcm->getId() ?>">Modifier</a>
+                    <form action="/delete-qcm.php?id" method="GET" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
                         <input type="hidden" name="id" value="<?= $qcm->getId() ?>"/>
                         <input type="submit" name="submit" value="Supprimer" />
                     </form>

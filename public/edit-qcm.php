@@ -2,18 +2,14 @@
 
 if(isset($_GET['id']))
 {
-
     $message = "";
 
-   
     require '../app/Manager/QcmManager.php';
+   
     $qcmManager = new QcmManager();
-    $qcm = $qcmManager->get($_GET['id']);
+    $qcms = $qcmManager->get($_GET['id']);
 
     // On recupère tous les qcms depuis la db
-   
-
-
     if(isset($_POST['submit']))
     {
         try
@@ -29,10 +25,7 @@ if(isset($_GET['id']))
         catch(Exception $e)
         {
             $message = $e->getMessage();
-        }
-        
+        }       
     }
-  
-
     require '../template/edit-qcm.tpl.php';
 }

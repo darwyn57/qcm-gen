@@ -20,6 +20,19 @@ class QcmManager extends Manager
 
         return $result;
     }
+    public function get(int $id) :QCM
+    {
+        $sql = "SELECT * FROM QCM WHERE id = :id";
+        $req = $this->getPdo()->prepare($sql);
+        $req->execute([
+            'id' => $id
+        ]);
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        
+        $QCM = (new QCM())->hydrate($result);
+
+        return $QCM;
+    }
 
     public function insert(string $title) : int
     {

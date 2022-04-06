@@ -1,5 +1,6 @@
 <?php require '../template/partials/_top.tpl.php'; ?>
-<div class="container">
+
+<div class="container my-4">
     <form action="" method="POST">
         <label>Intitulé du Qcm</label>
         <input type="text" name="title" value="<?= htmlspecialchars($qcm->getTitle()) ?>" required/>
@@ -20,4 +21,5 @@
     <?php endif; ?>
 </div>
 
-<?php require '../template/partials/_bottom.tpl.php'; ?>
+
+<?php require '../template/partials/_bottom.tpl.php';?>
