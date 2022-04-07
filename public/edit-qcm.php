@@ -7,7 +7,7 @@ if(isset($_GET['id']))
     require '../app/Manager/QcmManager.php';
    
     $qcmManager = new QcmManager();
-    $qcms = $qcmManager->getId();
+    $qcms = $qcmManager->get($_GET['id']);
 
     // On recupère tous les qcms depuis la db
     if(isset($_POST['submit']))
