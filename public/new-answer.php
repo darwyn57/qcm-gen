@@ -1,22 +1,24 @@
 <?php
 
-require '../app/Manager/QcmManager.php';
-$qcmManager = new QcmManager();
-$qcms = $qcmManager->getAll();
+require '../app/Manager/QuestionManager.php';
+require '../app/Manager/AnswerManager.php';
+$questionManager = new QuestionManager();
+$questions = $questionManager->getAll();
+
 
 $message = "";
 
 if(isset($_POST['submit']))
 {
-    if(!empty($_POST['title']))
+    if(!empty($_POST['text']))
     {
-        require '../app/Manager/QuestionManager.php';
-        $manager = new QuestionManager();
-        $qcmId = $manager->insert($_POST['title'], $_POST['id_qcm']);
+        require '../app/Manager/AnswerManager.php';
+        $answer = new AnswerManager();
+        $answerId = $answerManager->insert( $_POST['id'] ,$_POST['text'], $_POST['is_the_good'],$_POST['id_question']);
 
-        if($qcmId)
+        if($answerId)
         {
-            header('Location: /index-question.php'); die;
+            header('Location: /index-answer.php'); die;
         }
         else
         {

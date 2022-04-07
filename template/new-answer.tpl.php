@@ -5,9 +5,9 @@
         <input type="text" name="title" required/>
         <input type="submit" name="submit" value="Enregistrer" />
 
-        <select name="id_question">
-            <?php foreach($question_ids as $question_id): ?>
-                <option value="<?= $question_id->getQuestion_id() ?>"><?= $question_id->getText() ?></option>
+        <select name="title">
+            <?php foreach($questions as $question): ?>
+                <option value="<?= $question->getId() ?>"><?= $question->getTitle() ?></option>
             <?php endforeach; ?>
         </select>
     </form>

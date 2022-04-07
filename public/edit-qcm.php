@@ -19,7 +19,7 @@ if(isset($_GET['id']))
                 $formErrors[] = "Le titre est obligatoire";
 
 
-            $qcms->update($_GET['id'], $_POST['title']);
+            $qcmManager->update($_GET['id'], $_POST['title']);
             header('Location: /index.php');
         }
         catch(Exception $e)

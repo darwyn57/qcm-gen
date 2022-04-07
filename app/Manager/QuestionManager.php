@@ -11,11 +11,11 @@ class QuestionManager extends Manager
         $sql = 'SELECT * FROM question';
         $req = $this->getPdo()->prepare($sql);
         $req->execute();
-        $qcms = $req->fetchAll(PDO::FETCH_ASSOC);
+        $questions = $req->fetchAll(PDO::FETCH_ASSOC);
         $result = [];
-        foreach($qcms as $qcm)
+        foreach($questions as $question)
         {
-            $result[] = (new Question())->hydrate($qcm);
+            $result[] = (new Question())->hydrate($question);
         }
 
         return $result;

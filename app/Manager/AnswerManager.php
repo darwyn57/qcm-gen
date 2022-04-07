@@ -41,13 +41,15 @@ class AnswerManager extends Manager
         return $answer;
     }
 
-    public function insert(string $title, int $id_qcm) : int
+    public function insert(string $text, int $id_question) : int
     {
-        $sql = "INSERT INTO Answer (title, id_qcm) VALUES (:title, :id_qcm)";
+        $sql = "INSERT INTO Answer ('id', 'text', 'is_the_good', `id_question`)VALUES (:id,:text,:'is_the_good :id_question)";
         $req = $this->getPdo()->prepare($sql);
         $req->execute([
-            'title' => $title,
-            'id_qcm' => $id_qcm
+            'id' => $id,
+            'text' => $text,
+            'is_the_good' => $is_the_good,
+            'id_question' => $id_question
         ]);
 
         return $this->getPdo()->lastInsertId();
