@@ -1,5 +1,6 @@
 <?php require '../template/partials/_top.tpl.php'; ?>
 <div class="container">
+<button type="button" class="my-5 btn btn-outline-secondary"><a href="index.php">Retour QCM</a></button>
     <h1>Mes questions</h1>
 
     <a href="/new-question.php">Nouveau</a>
@@ -17,11 +18,11 @@
                 <td class="table-danger"><?= $q->getId() ?></td>
                 <td class="table-info"><?= $q->getTitle() ?></td>
                 <td>
-                <a href="/edit-question.php?id=<?= $q->getId() ?>">Modifier</a>
-                    <form action="/delete-question.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
+                <button type="button" class="btn btn-outline-info"><a href="/edit-question.php?id=<?= $q->getId() ?>">Modifier</a></button>
+                <button type="button" class="btn btn-outline-danger"><form action="/delete-question.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
                         <input type="hidden" name="id" value="<?= $q->getId() ?>" />
                         <input type="submit" name="submit" value="Supprimer" />
-                    </form>
+                    </form></button>
                 </td>
             </tr>
             <?php endforeach; ?>

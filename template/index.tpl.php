@@ -2,9 +2,9 @@
 
 <div class="container">
     <h1>Mes QCMs</h1>
-
-    <a href="/new-qcm.php">Nouveau</a>
-    
+    <div class="my-5">
+        <button type="button" class="btn btn-outline-secondary"><a href="/new-qcm.php">Nouveau Qcm</a></button>
+    </div>
 
     <table class="table table-hover table-bordered border-dark">
         <thead>
@@ -20,13 +20,13 @@
                 <td class="table-danger"><?= $qcm->getId() ?></td>
                 <td class="table-info"><?= $qcm->getTitle() ?></td>
                 <td>
-                    <a href="/edit-qcm.php?id=<?= $qcm->getId() ?>">Modifier</a>
-                    <a href="/index-question.php">nouvelle question</a>
-                    <form action="/delete-qcm.php" method="GET" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
-                        <input type="hidden" name="id" value="<?= $qcm->getId() ?>" />
-                        <input type="submit" name="submit" value="Supprimer" />
-                    </form>                  
-                     
+                    <button type="button" class="btn btn-outline-info"><a href="/edit-qcm.php?id=<?= $qcm->getId() ?>">Modifier</a></button>
+                    <button type="button" class="btn btn-outline-success"><a href="/index-question.php">nouvelle question</a></button>
+                    <button type="button" class="btn btn-outline-danger"><form action="/delete-qcm.php" method="GET" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
+                            <input type="hidden" name="id" value="<?= $qcm->getId() ?>" />
+                            <input type="submit" name="submit" value="Supprimer" />
+                        </form></button>                 
+                        
                     
                 </td>
             </tr>
