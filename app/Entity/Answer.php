@@ -11,10 +11,7 @@ class Answer extends Entity
 
     private bool $isTheGoodAnswer;
 
-    public function __construct(string $text, bool $isTheGoodAnswer = false)
-    {
-        $this->setText($text)->setIsTheGoodAnswer($isTheGoodAnswer);
-    }
+   
 
     // TODO : ajouter les propriétés
 
@@ -64,7 +61,7 @@ class Answer extends Entity
     /**
      * Get the value of answer_id
      */ 
-    public function getAnswer_id()
+    public function getId()
     {
         return $this->answer_id;
     }
@@ -74,7 +71,7 @@ class Answer extends Entity
      *
      * @return  self
      */ 
-    public function setAnswer_id($answer_id)
+    public function setId($answer_id)
     {
         $this->answer_id = $answer_id;
 

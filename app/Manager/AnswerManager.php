@@ -15,7 +15,7 @@ class AnswerManager extends Manager
         $result = [];
         foreach($answers as $answer)
         {
-            $result[] = (new Aswer())->hydrate($answer);
+            $result[] = (new Answer())->hydrate($answer);
         }
 
         return $result;
@@ -57,9 +57,9 @@ class AnswerManager extends Manager
 
     public function update(int $id, string $title, int $id_qcm)
     {
-        $sql = "UPDATE answer SET title = :title, id_qcm = :id_qcm; id_question = :id_question WHERE id = :id";
+        $sql = "UPDATE answer SET text = :text, id_qcm = :id_qcm; id_question = :id_question WHERE id = :id";
         $req = $this->getPdo()->prepare($sql);
-        return $req->execute(compact('id','title','id_qcm, id_question'));
+        return $req->execute(compact('id','text','id_qcm, id_question'));
     }
 
     public function delete(int $id)
